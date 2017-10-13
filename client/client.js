@@ -1,6 +1,7 @@
 import MenuState from "./states/menuState.js"
 import GUIState from "./states/guiState.js"
 import GameState from "./states/gameState.js"
+import Keys from "./keys.js"
 
 class Client {
     constructor() {
@@ -8,9 +9,11 @@ class Client {
         this.canvases = setupCanvases()
         // to choose the canvas to show
         this.canvasChoice = 1;
-        this.states = setupStates();
+        // array of states to tell us what to do
+        this.states = setupStates(this.canvases[0]);
         // current state on load
-        this.state = MENU;
+        //this.state = MENU;
+        this.state = GAME;
         this.keys = new Keys();
         window.addEventListener("keydown", this.keyDown.bind(this), false);
         window.addEventListener("keyup", this.keyUp.bind(this), false);
@@ -19,8 +22,7 @@ class Client {
         this.time = 0.0;
         // for standardizing update time
         this.deltaTime = 1.0/60.0;
-        // array of states to tell us what to do
-        this.loopID = -1;
+        this.clientLoopID = -1;
         this.started = false;
     }
 
@@ -29,13 +31,13 @@ class Client {
             return;
         }
         this.started = true;
-        this.loopID = requestAnimationFrame(this.clientLoop.bind(this));
+        this.clientLoopID = requestAnimationFrame(this.clientLoop.bind(this));
     }
 
     StopClientLoop() {
         this.started = false;
-        if (this.loopID !== -1) {
-            cancelAnimationFrame(this.loopID)
+        if (this.clientLoopID !== -1) {
+            cancelAnimationFrame(this.clientLoopID)
         }
     }
 
@@ -53,7 +55,7 @@ class Client {
         currentCanvas.style.visibility = 'visible';
         this.canvasChoice = 1 - this.canvasChoice;
         this.states[this.state].draw(currentCanvas)
-        this.loopID = requestAnimationFrame(this.clientLoop.bind(this));
+        this.clientLoopID = requestAnimationFrame(this.clientLoop.bind(this));
     }
 
     keyDown(e) {
@@ -68,13 +70,15 @@ class Client {
     setupCanvases() {
         var canvas1 = document.createElement("canvas");
         var canvas2 = document.createElement("canvas");
+        canvas1.width = canvas2.width = 900;
+        canvas1.height = canvas2.height = 504;
         return [canvas1, canvas2];
     }
 
-    setupStates() {
-        var menuState = new MenuState();
-        var guiState = new GUIState();
-        var gameState = new GameState();
+    setupStates(canvas) {
+        var menuState = new MenuState(canvas.width, canvas.height);
+        var guiState = new GUIState(canvas.width, canvas.height);
+        var gameState = new GameState(canvas.width, canvas.height);
         return [menuState, guiState, gameState];
     }
 }

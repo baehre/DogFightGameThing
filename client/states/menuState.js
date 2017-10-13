@@ -1,7 +1,7 @@
 import State from "./state.js"
 class MenuState extends State {
-    constructor() {
-        super();
+    constructor(canvasWidth, canvasHeight) {
+        super(canvasWidth, canvasHeight);
     }
 
     // draw for hte state takes dt
@@ -14,3 +14,5 @@ class MenuState extends State {
 
     }
 }
+
+export default MenuState
