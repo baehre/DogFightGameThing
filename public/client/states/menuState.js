@@ -1,4 +1,3 @@
-import State from "./state.js"
 class MenuState extends State {
     constructor(canvasWidth, canvasHeight) {
         super(canvasWidth, canvasHeight);
@@ -13,6 +12,4 @@ class MenuState extends State {
     render (dt) {
 
     }
-}
-
-export default MenuState
+};

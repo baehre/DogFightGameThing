@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./shared/game.js"></script>
+    <script src="./shared/utils.js"></script>
+    <script src="./client/stars/star.js"></script>
+    <script src="./client/stars/starBackground.js"></script>
+    <script src="./client/camera.js"></script>
+    <script src="./client/keys.js"></script>
+    <script src="./client/states/state.js"></script>
+    <script src="./client/states/gameState.js"></script>
+    <script src="./client/states/guiState.js"></script>
+    <script src="./client/states/menuState.js"></script>
+    <script src="./client/client.js"></script>
+</head>
+<style>
+    .canvasClass { 
+        border: 2px solid #000; 
+        position:absolute; 
+        top:0;
+        left:0; 
+        visibility: hidden; 
+    }
+</style>
+<body onload="var client = new Client();"></body>
+</html>

@@ -113,5 +113,4 @@ class Camera {
     setScreenShakeFrame(newScreenShakeFrame) {
         this.screenShakeFrame = newScreenShakeFrame;
     }
-}
-export default Camera
+};

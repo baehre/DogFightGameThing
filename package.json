@@ -1,0 +1,29 @@
+{
+  "name": "dogfightgamething",
+  "version": "1.0.0",
+  "description": "game with npm and classes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baehre/DogFightGameThing.git"
+  },
+  "keywords": [
+    "npm",
+    "class",
+    "game"
+  ],
+  "author": "Andrew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baehre/DogFightGameThing/issues"
+  },
+  "homepage": "https://github.com/baehre/DogFightGameThing#readme",
+  "dependencies": {
+    "express": "4.15.*",
+    "socket.io": "2.0.*",
+    "node-uuid": "1.3.3"
+  }
+}

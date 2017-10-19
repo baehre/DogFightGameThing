@@ -19,5 +19,4 @@ class State {
     GetCanvasWidth() {
         return this.canvasWidth;
     }
-}
-export default State
+};

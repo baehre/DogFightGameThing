@@ -38,5 +38,3 @@ class Star {
         ctx.stroke();
     }
 };
-
-export default Star

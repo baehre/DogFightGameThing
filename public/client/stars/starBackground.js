@@ -1,4 +1,3 @@
-import Star from "./star.js"
 class StarBackground {
     constructor(numStars, width, height) {
         this.width = width;
@@ -27,5 +26,3 @@ class StarBackground {
         return this.stars;
     }
 };
-
-export default StarBackground

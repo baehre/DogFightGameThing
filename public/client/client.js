@@ -1,18 +1,12 @@
-import MenuState from "./states/menuState.js"
-import GUIState from "./states/guiState.js"
-import GameState from "./states/gameState.js"
-import Keys from "./keys.js"
-
 class Client {
     constructor() {
         // 2 canvases for buffering
-        this.canvases = setupCanvases()
+        this.canvases = this.setupCanvases()
         // to choose the canvas to show
         this.canvasChoice = 1;
         // array of states to tell us what to do
-        this.states = setupStates(this.canvases[0]);
+        this.states = this.setupStates(this.canvases[0]);
         // current state on load
-        //this.state = MENU;
         this.state = GAME;
         this.keys = new Keys();
         window.addEventListener("keydown", this.keyDown.bind(this), false);
@@ -24,6 +18,8 @@ class Client {
         this.deltaTime = 1.0/60.0;
         this.clientLoopID = -1;
         this.started = false;
+        this.socket = io();
+        StartClientLoop();
     }
 
     StartClientLoop() {
@@ -68,10 +64,15 @@ class Client {
 
     // returns an array of 2 canvases. Used for buffering
     setupCanvases() {
+        console.log("calleD?")
         var canvas1 = document.createElement("canvas");
         var canvas2 = document.createElement("canvas");
         canvas1.width = canvas2.width = 900;
         canvas1.height = canvas2.height = 504;
+        canvas1.classList.add('canvasClass');
+        canvas2.classList.add('canvasClass');
+        document.body.appendChild(canvas1);
+        document.body.appendChild(canvas2);
         return [canvas1, canvas2];
     }
 
@@ -81,5 +82,4 @@ class Client {
         var gameState = new GameState(canvas.width, canvas.height);
         return [menuState, guiState, gameState];
     }
-}
-var client = new Client();
+};

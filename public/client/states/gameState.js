@@ -1,7 +1,3 @@
-import State from "./state.js"
-import Camera from "../camera.js"
-import StarBackground from "../stars/starBackground.js"
-import Game from "../../shared/game.js"
 class GameState extends State {
     constructor(canvasWidth, canvasHeight) {
         super(canvasWidth, canvasHeight);
@@ -26,6 +22,4 @@ class GameState extends State {
         this.starBackground.update(dt);
         this.camera.update(dt);
     }
-}
-
-export default GameState
+};
